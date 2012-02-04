@@ -330,14 +330,14 @@ Eddie supports the following patterns forms.:
     The code below will always return a value of -1:
 
     ```eddie
-        function Foo(x :: Bar) :: int{
-            switch (x) {
-                case Foo {}
-                    return 0;
-                default
-                    return -1;
-            }
-        }        
+    function Foo(x :: Bar) :: int{
+        switch (x) {
+            case Foo {}
+                return 0;
+            default
+                return -1;
+        }
+    }        
     ```
     
 
