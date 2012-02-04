@@ -50,6 +50,7 @@ IO function foo(x :: int) :: int
     };
     return tmp2.Item(1);
 }
+```
 
 Such a transformation is necessary to enable some features to work correctly,
 including "transparent monad comprehensions". In many cases, however, the 
