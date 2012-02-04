@@ -47,7 +47,8 @@ switch (v) {
 }
 ```
 
-The type of "x" is  "<code lang="eddie">all<T> (T)</code>" and the typeof "xs" is "all<T> ([T])".
+The type of "x" is  <code lang="eddie">all&lt;T&gt; (T)</code> and the type 
+of "xs" is <code lang="eddie">all&lt;T&gt; ([T])</code>.
 
 The special pattern variable _ can be used to denote an unbound pattern 
 element. For example, with the code below no variable is introduced to refer 
