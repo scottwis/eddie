@@ -49,5 +49,10 @@ compilation scenarios are supported yet.
         <td>The folder used for any intermediate build results.</td>
         <td></td>         
     <tr/>
+    <tr>
+        <td>doc</td>
+        <td>Documentation, including the language specification.</td>
+        <td>MIT / X11</td>
+    </tr>
 </table>
 
