@@ -52,8 +52,9 @@ of "xs" is <code lang="eddie">all&lt;T&gt; ([T])</code>.
 
 The special pattern variable _ can be used to denote an unbound pattern 
 element. For example, with the code below no variable is introduced to refer 
-to v.Head or v.Tail.Tail, while a variable y is bound to the expression 
-v.Head.Tail.
+to <code lang="eddie">v.Head</code> or <code lang="eddie">v.Tail.Tail</code>,
+while a variable <code lang="eddie">y</code> is bound to the expression 
+<code lang="eddie">v.Head.Tail</code>.
 
 ```eddie
 switch (v) {
@@ -63,7 +64,7 @@ switch (v) {
 ```
 
 Pattern variables may also specify types. For example, the code below can be 
-used to match v against a function of type int->int.
+used to match v against a function of type <code lang="eddie">int->int</code>.
 
 ```eddie
 switch (v){
@@ -122,41 +123,41 @@ Eddie supports the following patterns forms.:
   1. Cons patterns <code langauge="eddie-pattern">(x : xs)</code>
 
      Patterns of the form 
-     <code language="eddie-pattern">pattern : pattern</code> can 
+     <code lang="eddie-pattern">pattern : pattern</code> can 
      be used to match a list, optionally binding symbols to the head and 
      tail of the list. A cons pattern will match a list of arbitrary size, 
      provided it contains at least one element. Like cons expressions, cons 
      patterns are right associative. That is, the pattern 
-     <code language="eddie-pattern">a : b : c</code>, is equivalent to the 
-     pattern <code language="eddie-pattern">a : (b : c)</code>. 
+     <code lang="eddie-pattern">a : b : c</code>, is equivalent to the 
+     pattern <code lang="eddie-pattern">a : (b : c)</code>. 
 
-  2. List patterns <code language="eddie-pattern">([a, b, c])</code>
+  2. List patterns <code lang="eddie-pattern">([a, b, c])</code>
 
      Patterns of the form 
-     <code language="eddie-pattern">[pattern, ..., pattern]</code>
+     <code lang="eddie-pattern">[pattern, ..., pattern]</code>
      can also be used to match a list. Unlike cons patterns, however, a list
      pattern only matches lists of a particular length. For example the 
-     pattern <code language="eddie-pattern">[]</code> will match an empty 
-     list, but not <code language="eddie">[1,2,3]</code>.
+     pattern <code lang="eddie-pattern">[]</code> will match an empty 
+     list, but not <code lang="eddie">[1,2,3]</code>.
 
    3. Anonymous patterns <code langauge="eddie-pattern">(_)</code>
 
       A pattern that matches any object, but does not bind a name to the
-      object. The identifier <code language="eddie">"_"</code>
+      object. The identifier <code lang="eddie">"_"</code>
       is a keyword, and can only be used in the context of a pattern. Variables
       may use "_" in their names, however, and like other keywords 
-      <code language="eddie">_</code> can be escaped using "@". That is, 
-      <code language="eddie">foo_bar</code>, 
-      <code language="eddie">_baz</code>, and 
-      <code language="eddie">@_</code> may 
+      <code lang="eddie">_</code> can be escaped using "@". That is, 
+      <code lang="eddie">foo_bar</code>, 
+      <code lang="eddie">_baz</code>, and 
+      <code lang="eddie">@_</code> may 
       be used to name Eddie symbols, but "_" may not. 
 
-   4. Named patterns <code language="eddie-pattern">(x)</code>.
-   5. Tuple patterns <code language="eddie-pattern">((x, y, z))</code>.
-   6. Integer literal patterns <code language="eddie-pattern">(1234)</code>.
-   7. Floating point literal patterns <code language="eddie-pattner">(3.14)</code>
-   8. String literal patterns <code language="eddie-pattern">("Hello World")</code>
-   9. Character literal patterns <code language="eddie-pattern">('c')</code>
-   9. Object patterns <code language="eddie-pattern">(BinaryExpression { Left = x, Right = y})</code>
-   10. Typed patterns <code language="eddie-pattern">(x :: T)</code>
+   4. Named patterns <code lang="eddie-pattern">(x)</code>.
+   5. Tuple patterns <code lang="eddie-pattern">((x, y, z))</code>.
+   6. Integer literal patterns <code lang="eddie-pattern">(1234)</code>.
+   7. Floating point literal patterns <code lang="eddie-pattner">(3.14)</code>
+   8. String literal patterns <code lang="eddie-pattern">("Hello World")</code>
+   9. Character literal patterns <code lang="eddie-pattern">('c')</code>
+   9. Object patterns <code lang="eddie-pattern">(BinaryExpression { Left = x, Right = y})</code>
+   10. Typed patterns <code lang="eddie-pattern">(x :: T)</code>
    11. Parenthesis
