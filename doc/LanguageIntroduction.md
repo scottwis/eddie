@@ -141,6 +141,7 @@ Eddie supports the following patterns forms.:
     list, but not <code lang="eddie">[1,2,3]</code>.
 
   3. Anonymous patterns <code langauge="eddie-pattern">(_)</code>
+
     A pattern that matches any object, but does not bind a name to the
     object. The identifier <code lang="eddie">"_"</code>
     is a keyword, and can only be used in the context of a pattern. Variables
