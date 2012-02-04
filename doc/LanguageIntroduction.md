@@ -1,5 +1,7 @@
 **Immutability**
+
 **Lazy Evaluation**
+
 **Pattern Matching**
 
 Pattern matching in Eddie looks similar to the C switch statement except that
