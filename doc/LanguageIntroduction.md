@@ -1,8 +1,100 @@
-**Immutability**
-
-**Lazy Evaluation**
+**Immutability and Lazy Evaluation**
 
 **Imperative Return Syntax**
+
+Although Eddie is a pure functional programming language it eschews the 
+tranditonal functional programing concept of implictly defined return values. 
+Instead, keeping with it's C# roots it requires the programmer to 
+"explictly declare his intent" for an expression to yield a function's return 
+value using the `return` statement.
+
+Syntatically it is similar to the "imperative return statement" used in most 
+C-derived languages, and allows code like the following to be written:
+
+```eddie
+IO function foo(x :: int) :: int
+{
+    if (x > 10) {
+        if (x == 1) {
+            return 1;
+        }
+        Console.WriteLine("Hello");
+    }
+    Console.WriteLine("World");
+    return -1;
+}
+```
+
+Despite this seemingly imperative feature, Eddie is still a 
+"fundamentalist" functional programming language. The code above will behave 
+as if it was written functionally:
+
+```eddie
+IO function foo(x :: int) :: int
+{
+    var tmp = if (x > 10) {
+        yield if (x == 1) {
+            yield (true, 0);
+        }
+        else {
+            Console.WriteLine("Hello");
+            yield (false, default(int));
+        }
+    };
+    var tmp2 = if ( tmp.Item(0)) {
+        yield tmp;
+    }
+    else {
+        Console.WriteLine("World");
+        yield (true, -1);
+    };
+    return tmp2.Item(1);
+}
+
+Such a transformation is necessary to enable some features to work correctly,
+including "transparent monad comprehensions". In many cases, however, the 
+compiler is free to emit imperative function returns as an optimization.
+
+**Yielding Values**
+
+As alluded to previously, blocks in Eddie may yield values. Like 
+function return values, the value yielded from a block must be sepecified 
+explicitly using the `yield` keyword. A yield statement alway associates a 
+value with the most lexically enclosing block. If one path through a block 
+yields a value, then all paths through the  block must yield a value.
+
+For example, while the this code is legal:
+
+```eddie
+    var x = if (x > 10) {
+        yield 2;
+    }
+    else {
+        yield 1;
+    };
+```
+
+The following is not:
+
+```eddie
+    if (x > 10) {
+        yield 2;
+    }
+    Console.WriteLine("Foo Bar");
+```
+
+It is also an error to yield a value from a block and subsequently ignore 
+that value. Any code such as the following will result in a compile time 
+error.
+
+```eddie
+    if (x > 10) {
+        yield 2;
+    }
+    else {
+        yield 4;
+    }
+```
 
 **Pattern Matching**
 
@@ -162,17 +254,17 @@ Eddie supports the following patterns forms.:
 
     An integer literal pattern matches any object that is implictly 
     convertible to type `int` (`System.Numerics.BigInteger`), and has a value
-    (after conversion) that is equal to the literal value. For example given 
+    (after conversion) that is equal to the literal value. For example, given 
     this code:
 
     ```eddie
     class Foo {
         private int m_x;
-        public static implicit operator int(Foo x) {
+        public static implicit operator (x::Foo) :: int {
             return x.m_x;
         }
 
-        public string Stuff() {
+        public function Stuff() :: string {
             switch (this) {
                 case 0
                     return "Zero";
@@ -186,7 +278,7 @@ Eddie supports the following patterns forms.:
     ```eddie
 
     The results of evaluating `Stuff()` will never return a value 
-    "Not possible" becase the first pattern will always match such objects.
+    `"Not possible"` becase the first pattern will always match such objects.
 
   7. Floating point literal patterns `(3.14)`
 
@@ -206,7 +298,7 @@ Eddie supports the following patterns forms.:
     A character literal pattern matches any object that is implictly 
     convertible to type `char` and has a value after conversion that is 
     equal to the provided value. Character literal patterns always use an
-    ordinal case sensitive string comparison.
+    ordinal case sensitive comparison.
 
   10. Object patterns `(BinaryExpression { Left = x, Right = y})`
 
@@ -217,7 +309,35 @@ Eddie supports the following patterns forms.:
     object implicitly convertible to `FooBar` if the 'A' and 'B' members 
     of the converted object match the patterns `x : xs` and `(a,b,c)` 
     respectively. Member patterns may reference either field or property 
-    members.
+    members. 
+
+    A null reference will not match an object pattern. Similarly, if
+    the result of converting an object to the specified type returns null, 
+    the object will not match the Object metter even if no member patterns
+    are specified. For example, given the following class definition:
+
+    ```eddie
+    class Bar
+    {
+        public static implicit operator (x :: Bar) :: Foo {
+            return null;
+        }
+    }
+    ```
+
+    The code below will always return a value of -1:
+
+    ```eddie
+        function Foo(x :: Bar) :: int{
+            switch (x) {
+                case Foo {}
+                    return 0;
+                default
+                    return -1;
+            }
+        }        
+    ```
+    
 
   11. Typed patterns `(x :: T)`
 
@@ -241,6 +361,6 @@ Eddie supports the following patterns forms.:
   14. default Pattern
 
     The default pattern is similar to the `default` label in a C switch 
-    statemnt. The code in the default block is executed when non of the 
-    specified patterns match.
+    statement. It matches any object. It must be spcified as the last pattern 
+    in a switch statement and works using the `default` keyword.
    
