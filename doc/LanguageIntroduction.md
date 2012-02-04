@@ -12,7 +12,7 @@ that cases specify patterns instead of values.
 	case [a, b, _, c]
 	    return a*b+c;
     }
-'''
+```
 
 Unlike C there is no colon after the case expressions. They are not labels, 
 and you cannot jump between them. There is also no concept of fall-through,
