@@ -67,34 +67,34 @@ yields a value, then all paths through the  block must yield a value.
 For example, while the this code is legal:
 
 ```eddie
-    var x = if (x > 10) {
-        yield 2;
-    }
-    else {
-        yield 1;
-    };
+var x = if (x > 10) {
+    yield 2;
+}
+else {
+    yield 1;
+};
 ```
 
 The following is not:
 
 ```eddie
-    if (x > 10) {
-        yield 2;
-    }
-    Console.WriteLine("Foo Bar");
+if (x > 10) {
+    yield 2;
+}
+Console.WriteLine("Foo Bar");
 ```
 
 It is also an error to yield a value from a block and subsequently ignore 
-that value. Any code such as the following will result in a compile time 
-error.
+that value (the block must be used in an expression context). Code like the 
+the following will result in a compile time error:
 
 ```eddie
-    if (x > 10) {
-        yield 2;
-    }
-    else {
-        yield 4;
-    }
+if (x > 10) {
+    yield 2;
+}
+else {
+    yield 4;
+}
 ```
 
 **Pattern Matching**
@@ -123,14 +123,15 @@ switch (expr) {
     case 0 : x : _
     case x : [1, 2 ,3] 
         return x;
+    case null, 12345, "Hello"
+        return 0;
     default
         return 2;
 }
 ```
 
 Patterns may introduce variables, which are bound to the appropriate pattern 
-element and can be used in the body of the following case block, as in the 
-examples above. Like all local variables in Eddie, pattern variables support 
+element and can be used in the body of the following case block. Like all local variables in Eddie, pattern variables support 
 type inference. For example given this statement:
 
 ```eddie
