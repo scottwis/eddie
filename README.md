@@ -16,15 +16,16 @@ src/license.txt for more info. Each directory under third-party has it's own lic
 
 **Status**
 
-There is no stable release yet.
+This is a work in progess. Things are just getting started. No end-to-end 
+compilation scenarios are supported yet.
 
 **Organization**
 
 <table>
     <tr>
-        <td>**Folder**</td>
-        <td>**Description**</td>
-        <td>**License**</td>
+        <td><strong>Folder</strong></td>
+        <td><strong>Description</strong></td>
+        <td><strong>License</strong></td>
     </tr>
     <tr>
         <td>src/</td>
