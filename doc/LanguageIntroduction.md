@@ -2,6 +2,8 @@
 
 **Lazy Evaluation**
 
+**Imperative Return Syntax**
+
 **Pattern Matching**
 
 Pattern matching in Eddie looks similar to the C switch statement except that
@@ -62,7 +64,7 @@ switch (v) {
 ```
 
 Pattern variables may also specify types. For example, the code below can be 
-used to match v against a function of type <code lang="eddie">int->int</code>.
+used to match v against a function of type `int->int`.
 
 ```eddie
 switch (v){
@@ -121,39 +123,124 @@ Eddie supports the following patterns forms.:
   1. Cons patterns <code langauge="eddie-pattern">(x : xs)</code>
 
     Patterns of the form 
-    <code lang="eddie-pattern">pattern : pattern</code> can 
+    `pattern : pattern` can 
     be used to match a list, optionally binding symbols to the head and 
     tail of the list. A cons pattern will match a list of arbitrary size, 
     provided it contains at least one element. Like cons expressions, cons 
     patterns are right associative. That is, the pattern 
-    <code lang="eddie-pattern">a : b : c</code>, is equivalent to the 
-    pattern <code lang="eddie-pattern">a : (b : c)</code>. 
+    `a : b : c`, is equivalent to the 
+    pattern `a : (b : c)`. 
 
-  2. List patterns <code lang="eddie-pattern">([a, b, c])</code>
+  2. List patterns `([a, b, c])`
 
-    Patterns of the form 
-    <code lang="eddie-pattern">[pattern, ..., pattern]</code>
-    can also be used to match a list. Unlike cons patterns, however, a list
-    pattern only matches lists of a particular length. For example the 
-    pattern <code lang="eddie-pattern">[]</code> will match an empty 
-    list, but not <code lang="eddie">[1,2,3]</code>.
+    Patterns of the form `[pattern, ..., pattern]` can also be used to 
+    match a list. Unlike cons patterns, however, a list pattern only matches
+    lists of a particular length. For example the pattern `[]` will match an 
+    empty list, but not `[1,2,3]`. Similarly, the pattern `[(x, y), (a,b), _]`
+    will  match a list of 2 elements tuples with length 3.
 
-  3. Anonymous patterns <code langauge="eddie-pattern">(_)</code>
+  3. Anonymous patterns `_`
 
     A pattern that matches any object, but does not bind a name to the
-    object. The identifier `_`
-    is a keyword, and can only be used in the context of a pattern. Variables
-    may use `_` in their names, however, and like other keywords 
-    `_` can be escaped using "@". That is, `foo_bar`, `_baz`, and `@_` may be 
-    used to name Eddie symbols, but `_` may not. 
+    object. The identifier `_` is a keyword, and can only be used in the 
+    context of a pattern. Variables may use `_` in their names, however, and 
+    like other keywords `_` can be escaped using "@". That is, `foo_bar`, 
+    `_baz`, and `@_` may be used to name Eddie symbols, but `_` may not. 
 
   4. Named patterns `x`
-  5. Tuple patterns <code lang="eddie-pattern">((x, y, z))</code>.
-  6. Integer literal patterns <code lang="eddie-pattern">(1234)</code>.
-  7. Floating point literal patterns <code lang="eddie-pattner">(3.14)</code>
-  8. String literal patterns <code lang="eddie-pattern">("Hello World")</code>
-  9. Character literal patterns <code lang="eddie-pattern">('c')</code>
-  9. Object patterns <code lang="eddie-pattern">(BinaryExpression { Left = x, Right = y})</code>
-  10. Typed patterns <code lang="eddie-pattern">(x :: T)</code>
-  11. Parenthesis
 
+    A pattern of the form `id` matches an object of any type, and binds the 
+    provided identifier to it.
+
+  5. Tuple patterns `((x, y, z))`.
+
+    A pattern of the form `(pattern, ..., pattern)` matches any tuple whose 
+    ordinality matches that of the pattern and whose elements match the 
+    corresponding parameter type.
+
+  6. Integer literal patterns `(1234)`.
+
+    An integer literal pattern matches any object that is implictly 
+    convertible to type `int` (`System.Numerics.BigInteger`), and has a value
+    (after conversion) that is equal to the literal value. For example given 
+    this code:
+
+    ```eddie
+    class Foo {
+        private int m_x;
+        public static implicit operator int(Foo x) {
+            return x.m_x;
+        }
+
+        public string Stuff() {
+            switch (this) {
+                case 0
+                    return "Zero";
+                case Foo {m_x = 0}
+                    return "Not possible";
+                default
+                    return "Not zero";
+            }
+        }
+    }
+    ```eddie
+
+    The results of evaluating `Stuff()` will never return a value 
+    "Not possible" becase the first pattern will always match such objects.
+
+  7. Floating point literal patterns `(3.14)`
+
+    A floating point literal pattern matches any object that is implicitly 
+    convertible to type `double` and has a value after conversion that is equal
+    to the provided value.
+
+  8. String literal patterns `("Hello World")`
+
+    A string literal pattern matches any object that is implictly convertible
+    to type `string` and has a value after conversion that is equal to the 
+    provided value. String literal patterns always use an 
+    ordinal case sensitive string comparison.
+
+  9. Character literal patterns `('c')`
+
+    A character literal pattern matches any object that is implictly 
+    convertible to type `char` and has a value after conversion that is 
+    equal to the provided value. Character literal patterns always use an
+    ordinal case sensitive string comparison.
+
+  10. Object patterns `(BinaryExpression { Left = x, Right = y})`
+
+    A pattern of the form `Type { Id = pattern, ..., Id = pattern}` matches
+    any object that is implictly convertible to the provided type, and whose 
+    members (after conversion) match the provided member patterns. For 
+    example, the pattern `FooBar {A = x : xs, B = (a, b, c)}` will match an 
+    object implicitly convertible to `FooBar` if the 'A' and 'B' members 
+    of the converted object match the patterns `x : xs` and `(a,b,c)` 
+    respectively. Member patterns may reference either field or property 
+    members.
+
+  11. Typed patterns `(x :: T)`
+
+    A pattern of the form `pattern :: type` further restricts a pattern based 
+    on type. The location in a complex pattern where a type is specified has
+    semantic signifigance. For example the pattern `(x : xs) :: [int]` matches
+    a list of integers with at least one element, where as the pattern 
+    `(_ :: int) :  xs` matches a list of any type, provided that it's first 
+    element is implictly convertible to `int`).
+
+  12. Parenthesis
+
+    Patterns may optionally be placed inside parenthesis, in the same manner 
+    as an expression. The parens have no meaning, other than to syntatically 
+    group the pattern inside them.
+
+  13. Null Pattern `(null)`
+
+    The `null` pattern matches any null value.
+
+  14. default Pattern
+
+    The default pattern is similar to the `default` label in a C switch 
+    statemnt. The code in the default block is executed when non of the 
+    specified patterns match.
+   
