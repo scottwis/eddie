@@ -17,7 +17,9 @@ src/license.txt for more info. Each directory under third-party has it's own lic
 **Status**
 
 This is a work in progess. Things are just getting started. No end-to-end 
-compilation scenarios are supported yet.
+compilation scenarios are supported yet. You can see our bug-tracking server
+at http://eddie.myjetbrains.com/youtrack for details.
+
 
 **Organization**
 
