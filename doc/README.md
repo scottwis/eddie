@@ -32,11 +32,11 @@ Language. See the table below for details.
     </tr>
     <tr>
         <td><a href="doc/LexicalGrammar.md">LexicalGrammar.md</a></td>
-        <td>Defiens Eddie's lexical grammar.</td>.
+        <td>Defines Eddie's lexical grammar.</td>.
     </tr>
     <tr>
         <td><a href="doc/SyntaticGrammar.md">SyntaticGrammar.md</a></td>
-        <td>Define's Eddie's syntatic grammar.</td>
+        <td>Defines Eddie's syntatic grammar.</td>
     </tr>
 </table>
 
