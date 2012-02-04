@@ -3,16 +3,14 @@
 This folder contains various documents describing the Eddie Programming 
 Language. See the table below for details.
 
+**General**
 <table>
-    <tr>
-        <td colspan="2"><strong>General</strong></td>
-    </tr>
     <tr>
         <td><strong>File</strong></td>
         <td><strong>Description</strong></td>
     </tr>
     <tr>
-        <td><a href="doc/license.txt"></td>
+        <td><a href="doc/license.txt">license.txt</a></td>
         <td>Describes the license for the documents in this folder. All Eddie documentation is, along with the Eddie source code, distributed under the MIT / X11 license. See the file contents for details.</td>
     </tr>
     <tr>
@@ -24,30 +22,32 @@ Language. See the table below for details.
         <td>Provides an high level overivew of various Eddie language 
         features. It is not meant to be a formal specification.</td>
     </tr>
-    <tr>
-        <td colspan="2"><strong>Syntax</string></td>
-    </tr>
+</table>
+
+**Syntax**
+<table>
     <tr>
         <td><strong>File</strong></td>
         <td><strong>Description</strong></td>
     </tr>
     <tr>
         <td><a href="doc/LexicalGrammar.md">LexicalGrammar.md</a></td>
-        <td>Defiens Eddie's lexical grammar</td>.
+        <td>Defiens Eddie's lexical grammar.</td>.
     </tr>
     <tr>
-        <td><a href="doc/SyntaticGrammar.md"></td>
-        <td>Define's Eddie's syntatic grammar</td>
+        <td><a href="doc/SyntaticGrammar.md">SyntaticGrammar.md</a></td>
+        <td>Define's Eddie's syntatic grammar.</td>
     </tr>
-    <tr>
-        <td colspan="2"><strong>Semantics</strong></td>
-    </tr>
+</table>
+
+**Semantics**
+<table>
     <tr>
         <td><strong>File</strong></td>
         <td><strong>Description</strong></td>
     </tr>
     <tr>
-        <td><a href="doc/PatternTypeInference.md"</a></td>
+        <td><a href="doc/PatternTypeInference.md"</a>PatternTypeInference.md</td>
         <td>Describes the semantics used to infer types for pattern
         variables</td>
     </tr>
