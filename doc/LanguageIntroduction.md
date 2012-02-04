@@ -147,7 +147,7 @@ Eddie supports the following patterns forms.:
     `_` can be escaped using "@". That is, `foo_bar`, `_baz`, and `@_` may be 
     used to name Eddie symbols, but `_` may not. 
 
-  4. Named patterns <code lang="eddie-pattern">(x)</code>.
+  4. Named patterns `x`
   5. Tuple patterns <code lang="eddie-pattern">((x, y, z))</code>.
   6. Integer literal patterns <code lang="eddie-pattern">(1234)</code>.
   7. Floating point literal patterns <code lang="eddie-pattner">(3.14)</code>
