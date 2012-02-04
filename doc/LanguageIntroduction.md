@@ -47,14 +47,12 @@ switch (v) {
 }
 ```
 
-The type of "x" is  <code lang="eddie">all&lt;T&gt; (T)</code> and the type 
-of "xs" is <code lang="eddie">all&lt;T&gt; ([T])</code>.
+The type of "x" is  `all<T> (T)` and the type of "xs" is `all<T> ([T])`.
 
-The special pattern variable _ can be used to denote an unbound pattern 
+The special pattern variable `_` can be used to denote an unbound pattern 
 element. For example, with the code below no variable is introduced to refer 
-to <code lang="eddie">v.Head</code> or <code lang="eddie">v.Tail.Tail</code>,
-while a variable <code lang="eddie">y</code> is bound to the expression 
-<code lang="eddie">v.Head.Tail</code>.
+to `v.Head` or `v.Tail.Tail`, while a variable `y` is bound to the expression 
+`v.Head.Tail`.
 
 ```eddie
 switch (v) {
@@ -143,14 +141,11 @@ Eddie supports the following patterns forms.:
   3. Anonymous patterns <code langauge="eddie-pattern">(_)</code>
 
     A pattern that matches any object, but does not bind a name to the
-    object. The identifier <code lang="eddie">"_"</code>
+    object. The identifier `_`
     is a keyword, and can only be used in the context of a pattern. Variables
-    may use "_" in their names, however, and like other keywords 
-    <code lang="eddie">_</code> can be escaped using "@". That is, 
-    <code lang="eddie">foo_bar</code>, 
-    <code lang="eddie">_baz</code>, and 
-    <code lang="eddie">@_</code> may 
-    be used to name Eddie symbols, but "_" may not. 
+    may use `_` in their names, however, and like other keywords 
+    `_` can be escaped using "@". That is, `foo_bar`, `_baz`, and `@_` may be 
+    used to name Eddie symbols, but `_` may not. 
 
   4. Named patterns <code lang="eddie-pattern">(x)</code>.
   5. Tuple patterns <code lang="eddie-pattern">((x, y, z))</code>.
