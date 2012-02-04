@@ -3,6 +3,7 @@
 Pattern matching in Eddie looks similar to the C switch statement except that
 that cases specify patterns instead of values. 
 
+```eddie
     switch(expr) {
         case foo
             return 0;
@@ -11,6 +12,7 @@ that cases specify patterns instead of values.
 	case [a, b, _, c]
 	    return a*b+c;
     }
+'''
 
 Unlike C there is no colon after the case expressions. They are not labels, 
 and you cannot jump between them. There is also no concept of fall-through,
@@ -77,4 +79,6 @@ one below, will be optimized to use the MSIL .switch instruction.
             return "Other"
     }
 
-***Types of Pattern**
+**Pattern Types**
+
+Eddie supports the 
