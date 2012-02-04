@@ -110,12 +110,19 @@ switch (v) {
 }
 ```
 
-**Pattern Types**
+**Pattern Forms**
 
-Eddie supports the following types of patterns:
+Eddie supports the following patterns forms.:
 
-  1. Cons patterns
+  1. Cons patterns <code langauge="eddie">(x : xs)</code>
 
-     This is a test.
+     Patterns of the form <code language="eddie">pattern : pattern</code> can 
+     be used to match a list, optionally binding symbols to the head and 
+     tail of the list. A cons pattern will match a list of arbitrary size, 
+     provided it contains at least one element. Like cons expressions, cons 
+     patterns are right associative. That is, the pattern 
+     <code language="eddie">a : b : c<code>, is equivalent to the 
+     pattern <code language="eddie">a : (b : c)</code>.
 
-  2. 
+  2. List patterns <code language="eddie">([a, b, c])</code>
+
