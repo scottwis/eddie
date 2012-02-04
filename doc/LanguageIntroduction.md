@@ -56,7 +56,7 @@ Such a transformation is necessary to enable some features to work correctly,
 including "transparent monad comprehensions". In many cases, however, the 
 compiler is free to emit imperative function returns as an optimization.
 
-**Yielding Values**
+**Yielding Values from Blocks**
 
 As alluded to previously, blocks in Eddie may yield values. Like 
 function return values, the value yielded from a block must be sepecified 
