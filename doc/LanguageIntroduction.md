@@ -47,14 +47,14 @@ The type of "x" is  "all<T> (T)" and the typeof "xs" is "all<T> ([T])".
 
 The special pattern variable _ can be used to denote an unbound pattern 
 element. For example, with the code below no variable is introduced to refer 
-v.Head or v.Tail.Tail, while a variable y is bound to the expression 
+to v.Head or v.Tail.Tail, while a variable y is bound to the expression 
 v.Head.Tail.
 
 ```eddie
-    switch (v) {
-        case _ : y : _
-            Console.WriteLine(typeof(y));
-    }
+switch (v) {
+    case _ : y : _
+        Console.WriteLine(typeof(y));
+}
 ```
 
 Pattern variables may also specify types. For example, the code below can be 
@@ -89,6 +89,24 @@ switch (v) {
         return "One"
     default
         return "Other"
+}
+```
+
+Pattern matching is done using the dynamic type of an object. That allows 
+code like the following to be written: 
+
+```eddie
+switch (v) {
+    case 0
+        return "an integer, with the value 0"
+    case 1
+	return "an integer, with the value 1"
+    case x :: string
+	return string.Format("The string {0}.", x);
+    case "Hello world"
+        return "Hello World";
+    case x :: all<T> ([T])
+	return "A list of stuff";
 }
 ```
 
