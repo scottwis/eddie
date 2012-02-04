@@ -1,6 +1,6 @@
 **Pattern Matching**
 
-Pattern matching in Eddie looks similar to the C switch statemnt except that
+Pattern matching in Eddie looks similar to the C switch statement except that
 that cases specify patterns instead of values. 
 
     switch(expr) {
@@ -66,7 +66,7 @@ matched value could be used as a substitution for the generic type.
 
 Patterns are matched in their declared order, from top-to-bottom, 
 left-to-right. However, simple instances of the switch statement, such as the 
-one below will be optimized to use the MSIL ```.switch``` instruction.
+one below, will be optimized to use the MSIL .switch instruction.
 
     switch (v) {
         case 0
@@ -76,3 +76,5 @@ one below will be optimized to use the MSIL ```.switch``` instruction.
         default
             return "Other"
     }
+
+***Types of Pattern**
