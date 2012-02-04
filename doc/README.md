@@ -66,7 +66,7 @@ matched value could be used as a substitution for the generic type.
 
 Patterns are matched in their declared order, from top-to-bottom, 
 left-to-right. However, simple instances of the switch statement, such as the 
-one below will be optimized to use the MSIL '''.switch''' instruction.
+one below will be optimized to use the MSIL ```.switch``` instruction.
 
     switch (v) {
         case 0
