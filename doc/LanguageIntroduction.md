@@ -277,7 +277,7 @@ Eddie supports the following patterns forms.:
             }
         }
     }
-    ```eddie
+    ```
 
     The results of evaluating `Stuff()` will never return a value 
     `"Not possible"` becase the first pattern will always match such objects.
