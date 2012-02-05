@@ -1,5 +1,50 @@
 **Immutability and Lazy Evaluation**
 
+Like Haskell, Eddie is a _pure_ functional programming language. All local 
+variables and fields declared in Eddie are immutable and may not be modified 
+once they are set. Also, Eddie code uses non-strict, or lazy evaluation. 
+Expressions in Eddie will not be evaluated untill a value is necessary. 
+For example, given this code:
+
+```eddie
+function AllIntegers(int min) :: [T] 
+{
+    return min : AllIntegers(min + 1);
+}
+function Foo<T>(x :: [T]) :: (T, T) 
+{
+    return (x.Head, Last(x.Tail));
+}
+function Last<T>(x :: [T]) :: T {
+    switch (x) {
+        case [v]
+            return v;
+        case _ :: rest
+	    reutrn Last(rest);
+        default
+            throw new ArgumentNullException("x");
+}
+```
+
+A call to `Foo(AllIntegers(0)).Item(0)` will return the value 0, rather than
+overflow the stack.
+
+Types declared in other CLR supported languages may, of 
+course, be mutable. Eddie programs can consume them. Their use, however, 
+must be wrapped inside the IO monad.
+
+**List Types**
+
+**Tuple Types**
+
+**Functions**
+
+**Extension Methods**
+
+**Classes**
+
+**Interfaces**
+
 **Imperative Return Syntax**
 
 Although Eddie is a pure functional programming language it eschews the 
@@ -143,7 +188,7 @@ switch (v) {
 }
 ```
 
-The type of "x" is  `all<T> (T)` and the type of "xs" is `all<T> ([T])`.
+The type of "x" is `object` and the type of "xs" is `[T]`.
 
 The special pattern variable `_` can be used to denote an unbound pattern 
 element. For example, with the code below no variable is introduced to refer 
@@ -214,7 +259,7 @@ switch (v) {
 
 Eddie supports the following patterns forms.:
 
-  1. Cons patterns <code langauge="eddie-pattern">(x : xs)</code>
+  1. Cons patterns `(x : xs)`
 
     Patterns of the form 
     `pattern : pattern` can 
@@ -231,7 +276,8 @@ Eddie supports the following patterns forms.:
     match a list. Unlike cons patterns, however, a list pattern only matches
     lists of a particular length. For example the pattern `[]` will match an 
     empty list, but not `[1,2,3]`. Similarly, the pattern `[(x, y), (a,b), _]`
-    will  match a list of 2 elements tuples with length 3.
+    will  match a list of 2 elements tuples with length 3. Note that the `[]` 
+    pattern is just a synonym for the `null` pattern.
 
   3. Anonymous patterns `_`
 
@@ -315,7 +361,7 @@ Eddie supports the following patterns forms.:
 
     A null reference will not match an object pattern. Similarly, if
     the result of converting an object to the specified type returns null, 
-    the object will not match the Object metter even if no member patterns
+    the object will not match the Object member even if no member patterns
     are specified. For example, given the following class definition:
 
     ```eddie
