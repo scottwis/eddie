@@ -19,6 +19,10 @@ src/license.txt for more info. Each directory under third-party has it's own lic
 This is a work in progess. Things are just getting started. No end-to-end 
 compilation scenarios are supported yet.
 
+**Documentation**
+
+We use the github wiki for our documentation. Check it out at https://github.com/scottwis/eddie/wiki.
+
 **Organization**
 
 <table>
@@ -49,10 +53,5 @@ compilation scenarios are supported yet.
         <td>The folder used for any intermediate build results.</td>
         <td></td>         
     <tr/>
-    <tr>
-        <td>doc</td>
-        <td>Documentation, including the language specification.</td>
-        <td>MIT / X11</td>
-    </tr>
 </table>
 
