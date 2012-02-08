@@ -1,5 +1,5 @@
-﻿// =================================================================
-// ImmutableList.cs
+// =================================================================
+// Token.cs
 //  
 // Author:
 //       Scott Wisniewski <scott@scottdw2.com>
@@ -24,15 +24,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 // =================================================================
+using System;
 
-
-namespace Eddie.Compiler.CommandLine
+namespace Eddie.Compiler.Syntax
 {
-    class Programs
+    public class Token
     {
-        public static int Main(string[] argv)
-        {
-            return 0;
-        }
     }
 }
+

@@ -1,4 +1,4 @@
-﻿// =================================================================
+// =================================================================
 // ImmutableList.cs
 //  
 // Author:
@@ -24,15 +24,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 // =================================================================
+using System;
+using Eddie.Runtime.CompilerServices;
 
-
-namespace Eddie.Compiler.CommandLine
+namespace Eddie.Runtime.Collections
 {
-    class Programs
+    /// <summary>
+    /// Defines a covariant immutable list interface. It is used as the runtime representation
+    /// for list values ([T]) in Eddie code.
+    /// </summary>
+    /// <remarks>Note: This type is defined as an interface to enable use of the built-in generic variance
+    /// support in the CLR. It is not intended to be implemented by user code. Incorrect implementations of this interface are
+    /// dangerous and may break any Eddie code that uses them The Eddie Compiler will not allow
+    /// custom implemetnations of this interface in Eddie source files, and will reject references to any assembly other than
+    /// the Eddie Runtime Library that contains custom implementations of it. </remarks>
+    [Pure]
+    public interface ImmutableList<out T>
     {
-        public static int Main(string[] argv)
-        {
-            return 0;
-        }
+    	T Head { get; }
+		ImmutableList<T> Tail {get; }
     }
 }
+

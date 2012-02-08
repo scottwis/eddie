@@ -1,5 +1,5 @@
-﻿// =================================================================
-// ImmutableList.cs
+// =================================================================
+// PureAttribute.cs
 //  
 // Author:
 //       Scott Wisniewski <scott@scottdw2.com>
@@ -24,15 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 // =================================================================
+using System;
 
-
-namespace Eddie.Compiler.CommandLine
+namespace Eddie.Runtime.CompilerServices
 {
-    class Programs
+    /// <summary>
+    /// This attribute is inteded to be used in support of the Eddie compiler, and should not be
+    /// used directly by user code.
+    /// </summary>
+    /// <remarks>
+    /// The precense of a [Pure] attribute on a type indicates that the type is defined inside of Eddie
+    /// source code, and that its use does not require wrapping inside the IO monad.
+    /// </remarks>
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface)]
+    public class PureAttribute : Attribute
     {
-        public static int Main(string[] argv)
-        {
-            return 0;
-        }
     }
 }
+
