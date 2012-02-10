@@ -1,5 +1,5 @@
-﻿// =================================================================
-// ImmutableList.cs
+// =================================================================
+// Util.cs
 //  
 // Author:
 //       Scott Wisniewski <scott@scottdw2.com>
@@ -24,16 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 // =================================================================
-
 using System;
 
-namespace Eddie.Compiler.CommandLine
+namespace Eddie.Runtime
 {
-    class Programs
+    static class Util
     {
-        public static int Main(string[] argv)
+        public static T ArgNotNull<T>(this T value, string paramName) where T : class
         {
-            return 0;
+            if (value != null) {
+                return value;
+            }
+            throw new ArgumentNullException(paramName);
         }
     }
 }
+

@@ -1,5 +1,5 @@
-﻿// =================================================================
-// ImmutableList.cs
+// =================================================================
+// PureReference.cs
 //  
 // Author:
 //       Scott Wisniewski <scott@scottdw2.com>
@@ -26,14 +26,34 @@
 // =================================================================
 
 using System;
+using System.Threading;
 
-namespace Eddie.Compiler.CommandLine
+namespace Eddie.Runtime
 {
-    class Programs
+    sealed class PureReference<T> : Lazy<T> where T : class
     {
-        public static int Main(string[] argv)
+        private readonly Func<T> m_func;
+        private T m_cached;
+        private bool m_executed;
+
+        public PureReference(Func<T> func)
         {
-            return 0;
+            m_func = func.ArgNotNull("func");
         }
+
+        public T Value
+        {
+            get
+            {
+                if (!m_executed) {
+                    T value = m_func();
+                    Interlocked.CompareExchange(ref m_cached, value, null);
+                    m_executed = true;
+                }
+                return m_cached;
+            }
+        }
+
     }
 }
+

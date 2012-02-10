@@ -1,5 +1,5 @@
-﻿// =================================================================
-// ImmutableList.cs
+// =================================================================
+// CachedValue.cs
 //  
 // Author:
 //       Scott Wisniewski <scott@scottdw2.com>
@@ -24,16 +24,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 // =================================================================
-
 using System;
 
-namespace Eddie.Compiler.CommandLine
+namespace Eddie.Runtime
 {
-    class Programs
+    sealed class CachedValue<T> : Lazy<T>
     {
-        public static int Main(string[] argv)
+        private readonly T m_value;
+
+        public CachedValue(T value)
         {
-            return 0;
+            m_value = value;
+        }
+
+        public T Value {
+            get { return m_value; }
         }
     }
 }
+
