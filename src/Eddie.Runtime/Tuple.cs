@@ -36,7 +36,7 @@ namespace Eddie.Runtime
     public interface Tuple
     {
         int Count { get; }
-        object Item(int index);
+        Lazy<object> Item(int index);
     }
 
     /// <summary>
@@ -45,8 +45,8 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2> : Tuple
     {
-        T1 Item1 { get;}
-        T2 Item2 { get;}
+        Lazy<T1> Item1 { get;}
+        Lazy<T2> Item2 { get;}
     }
 
     /// <summary>
@@ -55,9 +55,9 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
     }
 
     /// <summary>
@@ -66,10 +66,10 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
     }
 
     /// <summary>
@@ -78,11 +78,11 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get;}
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get;}
     }
 
     /// <summary>
@@ -91,12 +91,12 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
     }
 
     /// <summary>
@@ -105,13 +105,13 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
     }
 
     /// <summary>
@@ -120,14 +120,14 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
     }
 
     /// <summary>
@@ -136,15 +136,15 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
-        T9 Item9 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
+        Lazy<T9> Item9 { get; }
     }
 
     /// <summary>
@@ -153,16 +153,16 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
-        T9 Item9 { get; }
-        T10 Item10 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
+        Lazy<T9> Item9 { get; }
+        Lazy<T10> Item10 { get; }
     }
 
     /// <summary>
@@ -171,17 +171,17 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
-        T9 Item9 { get; }
-        T10 Item10 { get; }
-        T11 Item11 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
+        Lazy<T9> Item9 { get; }
+        Lazy<T10> Item10 { get; }
+        Lazy<T11> Item11 { get; }
     }
 
     /// <summary>
@@ -190,18 +190,18 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
-        T9 Item9 { get; }
-        T10 Item10 { get; }
-        T11 Item11 { get; }
-        T12 Item12 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
+        Lazy<T9> Item9 { get; }
+        Lazy<T10> Item10 { get; }
+        Lazy<T11> Item11 { get; }
+        Lazy<T12> Item12 { get; }
     }
 
     /// <summary>
@@ -210,19 +210,19 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12, out T13> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
-        T9 Item9 { get; }
-        T10 Item10 { get; }
-        T11 Item11 { get; }
-        T12 Item12 { get; }
-        T13 Item13 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
+        Lazy<T9> Item9 { get; }
+        Lazy<T10> Item10 { get; }
+        Lazy<T11> Item11 { get; }
+        Lazy<T12> Item12 { get; }
+        Lazy<T13> Item13 { get; }
     }
 
     /// <summary>
@@ -231,20 +231,20 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12, out T13, out T14> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
-        T9 Item9 { get; }
-        T10 Item10 { get; }
-        T11 Item11 { get; }
-        T12 Item12 { get; }
-        T13 Item13 { get; }
-        T14 Item14 { get;}
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
+        Lazy<T9> Item9 { get; }
+        Lazy<T10> Item10 { get; }
+        Lazy<T11> Item11 { get; }
+        Lazy<T12> Item12 { get; }
+        Lazy<T13> Item13 { get; }
+        Lazy<T14> Item14 { get;}
     }
 
     /// <summary>
@@ -253,21 +253,21 @@ namespace Eddie.Runtime
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12, out T13, out T14, out T15> : Tuple
     {
-        T1 Item1 { get; }
-        T2 Item2 { get; }
-        T3 Item3 { get; }
-        T4 Item4 { get; }
-        T5 Item5 { get; }
-        T6 Item6 { get; }
-        T7 Item7 { get; }
-        T8 Item8 { get; }
-        T9 Item9 { get; }
-        T10 Item10 { get; }
-        T11 Item11 { get; }
-        T12 Item12 { get; }
-        T13 Item13 { get; }
-        T14 Item14 { get; }
-        T15 Item15 { get; }
+        Lazy<T1> Item1 { get; }
+        Lazy<T2> Item2 { get; }
+        Lazy<T3> Item3 { get; }
+        Lazy<T4> Item4 { get; }
+        Lazy<T5> Item5 { get; }
+        Lazy<T6> Item6 { get; }
+        Lazy<T7> Item7 { get; }
+        Lazy<T8> Item8 { get; }
+        Lazy<T9> Item9 { get; }
+        Lazy<T10> Item10 { get; }
+        Lazy<T11> Item11 { get; }
+        Lazy<T12> Item12 { get; }
+        Lazy<T13> Item13 { get; }
+        Lazy<T14> Item14 { get; }
+        Lazy<T15> Item15 { get; }
     }
 }
 

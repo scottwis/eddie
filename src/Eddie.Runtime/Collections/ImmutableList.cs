@@ -37,8 +37,8 @@ namespace Eddie.Runtime.Collections
     [Pure]
     public interface ImmutableList
     {
-        object Head { get; }
-        ImmutableList Tail { get; }
+        Lazy<object> Head { get; }
+        Lazy<ImmutableList> Tail { get; }
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ namespace Eddie.Runtime.Collections
     public interface ImmutableList<out T> : ImmutableList
     {
     	new T Head { get; }
-		new ImmutableList<T> Tail {get; }
+        new ImmutableList<T> Tail {get; }
     }
 }
 
