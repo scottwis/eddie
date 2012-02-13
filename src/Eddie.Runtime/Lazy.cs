@@ -33,11 +33,6 @@ namespace Eddie.Runtime
     /// Defines an interface for lazy evaluation. It is used as the run-time representation of pure values in Eddie Source code.
     /// All Eddie storage locations not marked with "val" or wrapped in the IO monad will use an instance of this type.
     /// </summary>
-    /// <remarks>Note: This type is defined as an interface to enable use of the built-in generic variance
-    /// support in the CLR. It is not intended to be implemented by user code. Incorrect implementations of this interface are
-    /// dangerous and may break any Eddie code that uses them The Eddie Compiler will not allow
-    /// custom implemetnations of this interface in Eddie source files, and will reject references to any assembly other than
-    /// the Eddie Runtime Library that contains custom implementations of it. </remarks>
     [Pure]
     public interface Lazy<out T>
     {
@@ -50,7 +45,7 @@ namespace Eddie.Runtime
         /// <summary>
         /// Creates a Lazy&lt;T&gt; from a cached value.
         /// </summary>
-        public static Lazy<T> Create<T>(T value)
+        public static Lazy<T> ToLazy<T>(this T value)
         {
             return new CachedValue<T>(value);
         }
@@ -59,11 +54,11 @@ namespace Eddie.Runtime
         /// Creates a Lazy&lt;T&gt; from a delegate for a T know to be a reference type.
         /// </summary>
         /// <remarks>
-        /// This method should be preferred over <see cref="Create"/> where possible.
+        /// This method should be preferred over <see cref="ToLazy"/> where possible.
         /// It uses a more efficent compare-and-swap operation to ensure idempotency,
-        /// where as the Create method must use a mutex.
+        /// where as the ToLazy method must use a mutex.
         /// </remarks>
-        public static Lazy<T> CreateReference<T>(Func<T> func) where T : class
+        public static Lazy<T> ToLazyReference<T>(this Func<T> func) where T : class
         {
             return new PureReference<T>(func);
         }
@@ -71,7 +66,7 @@ namespace Eddie.Runtime
         /// <summary>
         /// Create's a Lazy&lt;T&gt; from a delegate for a T not known to be a reference type.
         /// </summary>
-        public static Lazy<T> Create<T>(Func<T> f)
+        public static Lazy<T> ToLazy<T>(this Func<T> f)
         {
             return new Pure<T>(f);
         }

@@ -29,6 +29,12 @@ using Eddie.Runtime.CompilerServices;
 
 namespace Eddie.Runtime.Collections
 {
+    public interface ImmutableList
+    {
+        object Head { get; }
+        ImmutableList Tail { get; }
+    }
+
     /// <summary>
     /// Defines a covariant immutable list interface. It is used as the runtime representation
     /// for list values ([T]) in Eddie code.
@@ -39,10 +45,10 @@ namespace Eddie.Runtime.Collections
     /// custom implemetnations of this interface in Eddie source files, and will reject references to any assembly other than
     /// the Eddie Runtime Library that contains custom implementations of it. </remarks>
     [Pure]
-    public interface ImmutableList<out T>
+    public interface ImmutableList<out T> : ImmutableList
     {
-    	T Head { get; }
-		ImmutableList<T> Tail {get; }
+    	new T Head { get; }
+		new ImmutableList<T> Tail {get; }
     }
 }
 
