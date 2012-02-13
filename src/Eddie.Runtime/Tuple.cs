@@ -28,6 +28,10 @@ using System;
 
 namespace Eddie.Runtime
 {
+    /// <summary>
+    /// Defines a dynamically typed interface that serves as a base
+    /// for all tuple types.
+    /// </summary>
     [Pure]
     public interface Tuple
     {
@@ -35,6 +39,9 @@ namespace Eddie.Runtime
         object Item(int index);
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 2 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2> : Tuple
     {
@@ -42,6 +49,9 @@ namespace Eddie.Runtime
         T2 Item2 { get;}
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 3 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3> : Tuple
     {
@@ -50,6 +60,9 @@ namespace Eddie.Runtime
         T3 Item3 { get; }
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 4 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4> : Tuple
     {
@@ -59,6 +72,9 @@ namespace Eddie.Runtime
         T4 Item4 { get; }
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 5 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5> : Tuple
     {
@@ -69,6 +85,9 @@ namespace Eddie.Runtime
         T5 Item5 { get;}
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 6 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6> : Tuple
     {
@@ -80,6 +99,9 @@ namespace Eddie.Runtime
         T6 Item6 { get; }
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 7 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7> : Tuple
     {
@@ -92,6 +114,9 @@ namespace Eddie.Runtime
         T7 Item7 { get; }
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 8 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8> : Tuple
     {
@@ -105,6 +130,9 @@ namespace Eddie.Runtime
         T8 Item8 { get; }
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 9 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9> : Tuple
     {
@@ -119,6 +147,9 @@ namespace Eddie.Runtime
         T9 Item9 { get; }
     }
 
+    /// <summary>
+    /// Defines a covariant interface for a 10 element tuple.
+    /// </summary>
     [Pure]
     public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10> : Tuple
     {
@@ -132,6 +163,111 @@ namespace Eddie.Runtime
         T8 Item8 { get; }
         T9 Item9 { get; }
         T10 Item10 { get; }
+    }
+
+    /// <summary>
+    /// Defines a covariant interface for an 11 element tuple.
+    /// </summary>
+    [Pure]
+    public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11> : Tuple
+    {
+        T1 Item1 { get; }
+        T2 Item2 { get; }
+        T3 Item3 { get; }
+        T4 Item4 { get; }
+        T5 Item5 { get; }
+        T6 Item6 { get; }
+        T7 Item7 { get; }
+        T8 Item8 { get; }
+        T9 Item9 { get; }
+        T10 Item10 { get; }
+        T11 Item11 { get; }
+    }
+
+    /// <summary>
+    /// Defines a covariant interface for a 12 element tuple.
+    /// </summary>
+    [Pure]
+    public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12> : Tuple
+    {
+        T1 Item1 { get; }
+        T2 Item2 { get; }
+        T3 Item3 { get; }
+        T4 Item4 { get; }
+        T5 Item5 { get; }
+        T6 Item6 { get; }
+        T7 Item7 { get; }
+        T8 Item8 { get; }
+        T9 Item9 { get; }
+        T10 Item10 { get; }
+        T11 Item11 { get; }
+        T12 Item12 { get; }
+    }
+
+    /// <summary>
+    /// Defines a covariant interface for a 13 element tuple.
+    /// </summary>
+    [Pure]
+    public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12, out T13> : Tuple
+    {
+        T1 Item1 { get; }
+        T2 Item2 { get; }
+        T3 Item3 { get; }
+        T4 Item4 { get; }
+        T5 Item5 { get; }
+        T6 Item6 { get; }
+        T7 Item7 { get; }
+        T8 Item8 { get; }
+        T9 Item9 { get; }
+        T10 Item10 { get; }
+        T11 Item11 { get; }
+        T12 Item12 { get; }
+        T13 Item13 { get; }
+    }
+
+    /// <summary>
+    /// Defines a covariant interface for a 14 element tuple.
+    /// </summary>
+    [Pure]
+    public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12, out T13, out T14> : Tuple
+    {
+        T1 Item1 { get; }
+        T2 Item2 { get; }
+        T3 Item3 { get; }
+        T4 Item4 { get; }
+        T5 Item5 { get; }
+        T6 Item6 { get; }
+        T7 Item7 { get; }
+        T8 Item8 { get; }
+        T9 Item9 { get; }
+        T10 Item10 { get; }
+        T11 Item11 { get; }
+        T12 Item12 { get; }
+        T13 Item13 { get; }
+        T14 Item14 { get;}
+    }
+
+    /// <summary>
+    /// Defines a covariant interface for a 15 element tuple.
+    /// </summary>
+    [Pure]
+    public interface Tuple<out T1, out T2, out T3, out T4, out T5, out T6, out T7, out T8, out T9, out T10, out T11, out T12, out T13, out T14, out T15> : Tuple
+    {
+        T1 Item1 { get; }
+        T2 Item2 { get; }
+        T3 Item3 { get; }
+        T4 Item4 { get; }
+        T5 Item5 { get; }
+        T6 Item6 { get; }
+        T7 Item7 { get; }
+        T8 Item8 { get; }
+        T9 Item9 { get; }
+        T10 Item10 { get; }
+        T11 Item11 { get; }
+        T12 Item12 { get; }
+        T13 Item13 { get; }
+        T14 Item14 { get; }
+        T15 Item15 { get; }
     }
 }
 

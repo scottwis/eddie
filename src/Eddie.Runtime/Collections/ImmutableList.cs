@@ -29,6 +29,12 @@ using Eddie.Runtime.CompilerServices;
 
 namespace Eddie.Runtime.Collections
 {
+    /// <summary>
+    /// Defines a dynamically typed interface for an ImmutableList.
+    /// All list types in Eddie implement this interface. It is
+    /// primarily inteded to be used by pattern matching.
+    /// </summary>
+    [Pure]
     public interface ImmutableList
     {
         object Head { get; }
