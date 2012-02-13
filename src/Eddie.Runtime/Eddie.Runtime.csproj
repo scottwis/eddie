@@ -59,5 +59,6 @@
     <Compile Include="PureReference.cs" />
     <Compile Include="Pure.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="Tuple.cs" />
   </ItemGroup>
 </Project>
