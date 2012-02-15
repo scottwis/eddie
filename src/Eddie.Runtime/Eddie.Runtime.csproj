@@ -10,6 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Eddie.Runtime</RootNamespace>
     <AssemblyName>Eddie.Runtime</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -60,5 +61,6 @@
     <Compile Include="Pure.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Tuple.cs" />
+    <Compile Include="Pattern.cs" />
   </ItemGroup>
 </Project>
