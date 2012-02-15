@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 // =================================================================
 using System;
+using Eddie.Runtime.CompilerServices;
 
 namespace Eddie.Runtime
 {

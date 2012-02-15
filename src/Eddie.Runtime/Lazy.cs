@@ -62,7 +62,7 @@ namespace Eddie.Runtime
         {
             return new PureReference<T>(func);
         }
-
+        
         /// <summary>
         /// Create's a Lazy&lt;T&gt; from a delegate for a T not known to be a reference type.
         /// </summary>
