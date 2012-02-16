@@ -52,7 +52,7 @@ namespace Eddie.Runtime
         private static Lazy<R> Match<T, R>(
             Lazy<T> value, //value :: T
             Lazy<ImmutableList<Tuple<Func<Lazy<T>, Lazy<bool>>, Func<Lazy<T>, Lazy<R>>>>> patterns, //patterns :: [(T->bool, T->R)]
-            Func<Func<R>, Lazy<R>> createLazy //createLazy :: (val (void->R))->R
+            Func<Func<R>, Lazy<R>> createLazy //val createLazy :: (val (void->val R))->R
         )
         {
             if (value == null) {
